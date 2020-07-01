@@ -31,6 +31,6 @@ namespace Engine {
         Scene* currentScene;
     };
 
-//to be defined by client
+    //to be defined by client
     extern Application* CreateApplication();
 }

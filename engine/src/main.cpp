@@ -23,14 +23,13 @@ int main() {
     if (!gladLoadGL()) std::cout << "Failed to initialize GLAD" << std::endl;
 
     application->init();
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glEnable(GL_DEPTH_TEST);
+    glCullFace(GL_FRONT);
     while (!glfwWindowShouldClose(window)) {
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-            glfwSetWindowShouldClose(window, true);
-        }
-
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
         if (!application->isRunning()) break;
-        glClearColor(0.0, 0.0, 0.0, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         application->update();
         application->handleEvents();//??
         glfwSwapBuffers(window);

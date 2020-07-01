@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/")
 project(renderer)
 
+LINK_DIRECTORIES(/usr/local/lib)
 add_subdirectory(engine)
 add_subdirectory(sandbox)
 
