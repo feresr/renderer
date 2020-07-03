@@ -9,11 +9,11 @@ file(GLOB src
 file(GLOB vendor ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/src/*.c)
 add_library(engine ${src} ${vendor})
 
-target_include_directories(engine PRIVATE
+target_include_directories(engine PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb/)
 
 file(COPY assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(engine PRIVATE glfw assimp)
+target_link_libraries(engine PUBLIC glfw assimp)
