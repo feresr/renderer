@@ -7,7 +7,12 @@
 #include "Shader.h"
 
 RenderSystem::RenderSystem(int gameResolutionWidth, int gameResolutionHeight) :
-        GAME_RESOLUTION_WIDTH(gameResolutionWidth), GAME_RESOLUTION_HEIGHT(gameResolutionHeight) {}
+        GAME_RESOLUTION_WIDTH(gameResolutionWidth), GAME_RESOLUTION_HEIGHT(gameResolutionHeight) {
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+}
 
 Shader* shader;
 Model* obj;
@@ -34,6 +39,7 @@ float lightH = 0.0;
 glm::vec3 lightpos(0.0, 20.0, 0.0);
 
 void RenderSystem::update(Scene* scene) {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     auto camera = scene->findFirst<CameraComponent>()->get<CameraComponent>();
     view = glm::lookAt(camera->position, camera->position + glm::normalize(camera->direction),
                        glm::vec3(0.0, 1.0, 0.0));

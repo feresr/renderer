@@ -16,7 +16,9 @@ namespace Engine {
 
         virtual ~Application();
 
-        virtual void handleEvents();
+        virtual void handleEvents() = 0;
+
+        virtual bool isRunning() { return true; }
 
         static Application& get() { return *instance; }
 
